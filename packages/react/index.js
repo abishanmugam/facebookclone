@@ -7,6 +7,30 @@
  * @flow
  */
 
+// Keep in sync with https://github.com/facebook/flow/blob/main/lib/react.js
+export type StatelessFunctionalComponent<
+  P,
+> = React$StatelessFunctionalComponent<P>;
+export type ComponentType<-P> = React$ComponentType<P>;
+export type AbstractComponent<
+  -Config,
+  +Instance = mixed,
+> = React$AbstractComponent<Config, Instance>;
+export type ElementType = React$ElementType;
+export type Element<+C> = React$Element<C>;
+export type Key = React$Key;
+export type Ref<C> = React$Ref<C>;
+export type Node = React$Node;
+export type Context<T> = React$Context<T>;
+export type Portal = React$Portal;
+export type ElementProps<C> = React$ElementProps<C>;
+export type ElementConfig<C> = React$ElementConfig<C>;
+export type ElementRef<C> = React$ElementRef<C>;
+export type Config<Props, DefaultProps> = React$Config<Props, DefaultProps>;
+export type ChildrenArray<+T> = $ReadOnlyArray<ChildrenArray<T>> | T;
+
+// Export all exports so that they're available in tests.
+// We can't use export * from in Flow for some reason.
 export {
   __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,
   act as unstable_act,
@@ -18,13 +42,11 @@ export {
   StrictMode,
   Suspense,
   SuspenseList,
-  SuspenseList as unstable_SuspenseList, // TODO: Remove once call sights updated to SuspenseList
   cloneElement,
   createContext,
   createElement,
   createFactory,
   createMutableSource,
-  createMutableSource as unstable_createMutableSource,
   createRef,
   createServerContext,
   use,
@@ -34,13 +56,12 @@ export {
   memo,
   cache,
   startTransition,
-  startTransition as unstable_startTransition, // TODO: Remove once call sights updated to startTransition
   unstable_Cache,
-  unstable_TracingMarker,
   unstable_DebugTracingMode,
   unstable_LegacyHidden,
   unstable_Offscreen,
   unstable_Scope,
+  unstable_TracingMarker,
   unstable_getCacheSignal,
   unstable_getCacheForType,
   unstable_useCacheRefresh,
@@ -50,21 +71,17 @@ export {
   useContext,
   useDebugValue,
   useDeferredValue,
-  useDeferredValue as unstable_useDeferredValue, // TODO: Remove once call sights updated to useDeferredValue
   useEffect,
   experimental_useEffectEvent,
   useImperativeHandle,
-  useLayoutEffect,
   useInsertionEffect,
+  useLayoutEffect,
   useMemo,
   useMutableSource,
-  useMutableSource as unstable_useMutableSource,
+  useSyncExternalStore,
   useReducer,
   useRef,
   useState,
-  useSyncExternalStore,
   useTransition,
-  useTransition as unstable_useTransition, // TODO: Remove once call sights updated to useTransition
   version,
 } from './src/React';
-export {jsx, jsxs, jsxDEV} from './src/jsx/ReactJSX';
